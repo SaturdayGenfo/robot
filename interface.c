@@ -52,7 +52,7 @@ int main(){
     }
     printf("\n");
     AX12move(121, 0, &endCallback);
-
+     double speed=0;
     while ((c = getch()) != '.'){
         switch(c){
             case 'w':
@@ -75,10 +75,9 @@ int main(){
 void W(){
     printf("You pressed W\n");
     uint8_t id = 164;
+    double speed =AX12getSpedd(id);
     AX12setMode(id, WHEEL_MODE);
-    double speed = 70;
-    double torque = 50;
-
+    speed=speed+10;
     AX12turn(id, speed);
 
 }
@@ -97,6 +96,10 @@ void A(){
 }
 void S(){
     printf("You pressed S\n");
+	uint8_t id=164;
+	double speed=AX12getSpeed(id);
+	speed=speed-10;
+        AX12turn(id,speed);
 }
 void D(){
     printf("You pressed D\n");
